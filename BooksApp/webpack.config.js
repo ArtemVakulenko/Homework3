@@ -5,7 +5,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const pages = [
     {
-        template: path.resolve(__dirname, 'src/index.html'),
+        template: path.resolve(__dirname, 'public/index.html'),
         filename: 'index.html',
     },
 ];
@@ -51,7 +51,7 @@ module.exports = {
                 use: {
                     loader: 'babel-loader',
                     options: {
-                        presets: ['@babel/preset-react','@babel/preset-env'],
+                        presets: ['@babel/preset-react', '@babel/preset-env'],
                     },
                 },
             },
