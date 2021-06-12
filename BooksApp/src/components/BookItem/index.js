@@ -1,3 +1,9 @@
+import { connect } from 'react-redux';
+import { bookDeleteRequest } from '../../store/booksCrudActions/asyncActions.js';
 import BookItem from './BookItem.jsx';
 
-export default BookItem;
+const mapDispatchToProps = { 
+    bookDeleteRequest,
+};
+
+export default connect(null, mapDispatchToProps)(BookItem);

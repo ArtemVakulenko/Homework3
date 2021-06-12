@@ -4,7 +4,10 @@ import './BooksControlPanel.scss';
 import Input from './Input';
 import Button from '../Button';
 
-const BooksControlPanel = ({ booksGetRequest }) => {
+const BooksControlPanel = ({ booksGetRequest, booksPostRequest }) => {
+    const createBook = () => {
+        booksPostRequest();
+    };
     return (
         <div className="controlPanel">
             <Button value="get books from server (only first time)" onClick={booksGetRequest}/>
@@ -14,13 +17,15 @@ const BooksControlPanel = ({ booksGetRequest }) => {
                 <Input id="author" label="author"/>
                 <Input id="description" label="description"/>
                 <Input id="image" label="image"/>
-                <Button value="send"/>
+                <Button value="send" onClick={createBook}/>
+                <Button value="put"/>
             </div>
         </div>
     );
 };
 BooksControlPanel.propTypes = {
     booksGetRequest: propTypes.func,
+    booksPostRequest: propTypes.func,
 };
 
 export default BooksControlPanel;

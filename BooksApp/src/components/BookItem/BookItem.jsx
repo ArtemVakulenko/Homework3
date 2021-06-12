@@ -1,19 +1,20 @@
 import React from 'react';
 import './BookItem.scss';
 import propTypes from 'prop-types';
-// import Input from './Input';
-// import Button from '../Button';
+import Button from '../Button';
 
-const BookItem = ({ book }) => {
-    const { title, year, author, description, image } = book;
+const BookItem = ({ book, bookDeleteRequest }) => {
+    const { id, title, date, author, description, image } = book;
     return (
         <>
         <div className="bookItem">
             <h5>{title}</h5>
-            <p>{year}</p>
+            <p>{date}</p>
             <p>{author}</p>
             <p>{description}</p>
             <img src={image}/>
+            <Button value="delete" onClick={bookDeleteRequest(id)}/>
+            <Button value="edit"/>
         </div>
         </>
     );
@@ -21,6 +22,7 @@ const BookItem = ({ book }) => {
 
 BookItem.propTypes = {
     book: propTypes.object,
+    bookDeleteRequest: propTypes.func,
 };
 
 export default BookItem;
