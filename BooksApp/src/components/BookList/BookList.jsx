@@ -1,6 +1,6 @@
 import React from 'react';
 import './BookList.scss';
-import propTypes from 'prop-types';
+// import propTypes from 'prop-types';
 import BookItem from '../BookItem';
 import books from '../../placeholder';
 
