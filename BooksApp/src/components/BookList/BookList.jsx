@@ -1,14 +1,21 @@
 import React from 'react';
 import './BookList.scss';
-// import Input from './Input';
-// import Button from '../Button';
+import propTypes from 'prop-types';
+import BookItem from '../BookItem';
+import books from '../../placeholder';
 
 const BookList = () => {
     return (
         <div className="bookList">
-            qwerty
+            {books.map((item) => (
+                <BookItem book={item} key={item.id}/>),
+                )}
         </div>
     );
 };
+
+// BookList.propTypes = {
+//     books: propTypes.arrayOf(propTypes.object),
+// };
 
 export default BookList;

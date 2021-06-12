@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Header from '../Header';
 import BooksControlPanel from '../BooksControlPanel';
+import BookList from '../BookList';
 
 class App extends Component {
     render() {
@@ -8,6 +9,7 @@ class App extends Component {
             <>
             <Header/>
             <BooksControlPanel/>
+            <BookList/>
             </>
         );
     }

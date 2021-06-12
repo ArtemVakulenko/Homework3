@@ -8,13 +8,13 @@ const BookItem = ({ book }) => {
     const { title, year, author, description, image } = book;
     return (
         <>
-        <div className="bookItem" />
+        <div className="bookItem">
             <h5>{title}</h5>
             <p>{year}</p>
             <p>{author}</p>
             <p>{description}</p>
             <img src={image}/>
-        <div/>
+        </div>
         </>
     );
 };
