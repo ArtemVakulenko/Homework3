@@ -1,13 +1,11 @@
 const { Router } = require('express');
+const { BooksController } = require('../controllers');
 const { URL } = require('../helpers');
 
 const books = Router();
+const Controller = new BooksController();
 
-const test = () => {
-    console.log('works');
-};
-
-books.get(URL.books, test);
+books.get(URL.books, Controller.getBooks);
 
 module.exports = {
     books,
