@@ -1,15 +1,11 @@
 import React from 'react';
 import propTypes from 'prop-types';
-import { StButton } from './styled';
+import StButton from './styled';
 
 function Button(props) {
     const { onClick, value } = props;
         return (
-            <StButton 
-                onClick={onClick}
-            >
-                {value}
-            </StButton>
+            <StButton onClick={onClick}>{value}</StButton>
         );
 }
 

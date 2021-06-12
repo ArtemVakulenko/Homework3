@@ -1,12 +1,12 @@
 import React from 'react';
-// import StHeader from './styled';
 import './Header.scss';
+// import Button from "../Button"
 
 const Header = () => {
     return (
-<div className="header">
-        hello troom react
-</div>
+        <div className="header">
+                hello from react
+        </div>
     );
 };
 
