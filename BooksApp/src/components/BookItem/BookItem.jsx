@@ -5,6 +5,9 @@ import Button from '../Button';
 
 const BookItem = ({ book, bookDeleteRequest }) => {
     const { id, title, date, author, description, image } = book;
+    const handleDelete = () => {
+        bookDeleteRequest(id);
+    };
     return (
         <>
         <div className="bookItem">
@@ -13,7 +16,7 @@ const BookItem = ({ book, bookDeleteRequest }) => {
             <p>{author}</p>
             <p>{description}</p>
             <img src={image}/>
-            <Button value="delete" onClick={bookDeleteRequest(id)}/>
+            <Button value="delete" onClick={handleDelete}/>
             <Button value="edit"/>
         </div>
         </>

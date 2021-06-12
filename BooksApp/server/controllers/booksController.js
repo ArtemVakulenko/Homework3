@@ -14,6 +14,7 @@ class BooksController {
     }
 
     getBooks = (req, res) => {
+        console.log('get');
         this.db.all('SELECT * FROM books', (err, data) => {
             if (err) {
                 this.response(res, 400, 'sosi lapu');
@@ -23,6 +24,7 @@ class BooksController {
     }
 
     postBooks = (req, res) => {
+        console.log('post');
         const body = req.body;
         const postQuery = `INSERT INTO books (title, date, author, description, image) VALUES ("${body.title}", "${body.date}", "${body.author}", "${body.description}", "${body.image}")`;
         this.db.run(postQuery, (err) => {
@@ -34,6 +36,7 @@ class BooksController {
     }
 
     putBooks = (req, res) => {
+        console.log('put');
         const body = req.body;
         const putQuery = `UPDATE books SET (title, date, author, description, image) = ("${body.title}", "${body.date}", "${body.author}", "${body.description}", "${body.image}") WHERE id = ${body.id}`;
         this.db.run(putQuery, (err) => {
@@ -45,6 +48,7 @@ class BooksController {
     }
 
     deleteBooks = (req, res) => {
+        console.log('delete');
         const body = req.body;
         const deleteQuery = `DELETE FROM books WHERE id = ${body.id}`;
         this.db.run(deleteQuery, (err) => {

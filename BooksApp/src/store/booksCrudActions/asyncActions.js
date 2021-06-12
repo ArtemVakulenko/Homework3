@@ -1,34 +1,32 @@
 import { booksGetRequest } from '../books/asyncActions';
 import * as ACTIONS from './actions';
+import { setBooksTostore } from '../books/actions';
 import { URL } from '../../helpers/constants';
 
 export const booksPostRequest = () => (dispatch, getState) => {
     const body = getState().booksCrudActions.postBook;
-    const options = {
+    fetch(URL.books, {
         method: 'POST',
         body: JSON.stringify(body),
         headers: {
             'Content-Type': 'application/json',
         },
-    };
-    fetch(URL.books, options);
-    // .then(() => dispatch(ACTIONS.clearFields()))
-    // .then(() => dispatch(booksGetRequest()));
+    });
+    // .then(() => dispatch(booksGetRequest()))
+    // .then((data) => dispatch(setBooksTostore(data)));
 };
 
 export const bookDeleteRequest = (id) => (dispatch) => {
     const body = {
         id,
     };
-    const options = {
-        method: 'POST',
+    fetch(URL.books, {
+        method: 'DELETE',
         body: JSON.stringify(body),
         headers: {
             'Content-Type': 'application/json',
-        },
-    };
-    fetch(URL.books, options);
-    // .then(() => dispatch(booksGetRequest));
+        }, 
+    });
 };
 
 export const bookPutRequest = () => (dispatch, getState) => {
@@ -37,6 +35,4 @@ export const bookPutRequest = () => (dispatch, getState) => {
         method: 'PUT',
         body,
     });
-    // .then(() => dispatch(ACTIONS.clearFields))
-    // .then(() => dispatch(booksGetRequest));
 };
