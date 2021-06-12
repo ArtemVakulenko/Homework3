@@ -8,10 +8,49 @@ class BooksController {
           }));
     }
 
-    getBooks = () => {
+    response = (res, status, content) => {
+        return res.status(status).json(content);
+    }
+
+    getBooks = (req, res) => {
         this.db.all('SELECT * FROM books', (err, data) => {
-            if (err) console.log(err); 
-            console.log(data);
+            if (err) {
+                this.response(res, 400, 'sosi lapu');
+            }
+            this.response(res, 200, data);
+        });
+    }
+
+    postBooks = (req, res) => {
+        const body = req.body;
+        const postQuery = `INSERT INTO books (title, date, author, description, image) VALUES ("${body.title}", "${body.date}", "${body.author}", "${body.description}", "${body.image}")`;
+        this.db.run(postQuery, (err) => {
+            if (err) {
+                this.response(res, 400, 'sosi lapu');
+            }
+            this.response(res, 200, 'vse ok');
+        });
+    }
+
+    putBooks = (req, res) => {
+        const body = req.body;
+        const putQuery = `UPDATE books SET (title, date, author, description, image) = ("${body.title}", "${body.date}", "${body.author}", "${body.description}", "${body.image}") WHERE id = ${body.id}`;
+        this.db.run(putQuery, (err) => {
+            if (err) {
+                this.response(res, 400, 'sosi lapu');
+            }
+            this.response(res, 200, 'vse ok');
+        });
+    }
+
+    deleteBooks = (req, res) => {
+        const body = req.body;
+        const deleteQuery = `DELETE FROM books WHERE id = ${body.id}`;
+        this.db.run(deleteQuery, (err) => {
+            if (err) {
+                this.response(res, 400, 'sosi lapu');
+            }
+            this.response(res, 200, 'vse ok');
         });
     }
 }
