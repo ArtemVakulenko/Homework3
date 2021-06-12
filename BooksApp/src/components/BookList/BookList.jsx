@@ -1,10 +1,10 @@
 import React from 'react';
 import './BookList.scss';
-// import propTypes from 'prop-types';
+import propTypes from 'prop-types';
 import BookItem from '../BookItem';
-import books from '../../placeholder';
+// import books from '../../placeholder';
 
-const BookList = () => {
+const BookList = ({ books }) => {
     return (
         <div className="bookList">
             {books.map((item) => (
@@ -14,8 +14,8 @@ const BookList = () => {
     );
 };
 
-// BookList.propTypes = {
-//     books: propTypes.arrayOf(propTypes.object),
-// };
+BookList.propTypes = {
+    books: propTypes.arrayOf(propTypes.object),
+};
 
 export default BookList;
