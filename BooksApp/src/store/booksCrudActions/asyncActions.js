@@ -11,9 +11,11 @@ export const booksPostRequest = () => (dispatch, getState) => {
         headers: {
             'Content-Type': 'application/json',
         },
-    });
-    // .then(() => dispatch(booksGetRequest()))
-    // .then((data) => dispatch(setBooksTostore(data)));
+    })
+    .then(() => dispatch(booksGetRequest()))
+    .then((data) => JSON.parse(data))
+    .then((data) => dispatch(setBooksTostore(data)))
+    .then(dispatch(ACTIONS.clearFields()));
 };
 
 export const bookDeleteRequest = (id) => (dispatch) => {
@@ -26,13 +28,22 @@ export const bookDeleteRequest = (id) => (dispatch) => {
         headers: {
             'Content-Type': 'application/json',
         }, 
-    });
+    })
+    .then(() => dispatch(booksGetRequest()))
+    .then((data) => JSON.parse(data))
+    .then((data) => dispatch(setBooksTostore(data)));
 };
 
 export const bookPutRequest = () => (dispatch, getState) => {
-    const body = getState.booksCrudActions.postBook;
+    const body = getState.booksCrudActions.putBook;
     fetch(URL.books, {
         method: 'PUT',
-        body,
+        body: JSON.stringify(body),
+        headers: {
+            'Content-Type': 'application/json',
+        },
     });
+    // .then(() => dispatch(booksGetRequest()))
+    // .then((data) => JSON.parse(data))
+    // .then((data) => dispatch(setBooksTostore(data)));
 };
