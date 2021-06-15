@@ -1,7 +1,17 @@
 import * as AT from './actionTypes';
 
-export const changeField = (payload) => ({
-    type: AT.CHANGE_FIELD,
+export const changeFieldPost = (payload) => ({
+    type: AT.CHANGE_FIELD_POST,
+    payload,
+});
+
+export const changeFieldPut = (payload) => ({
+    type: AT.CHANGE_FIELD_PUT,
+    payload,
+});
+
+export const setFieldPut = (payload) => ({
+    type: AT.SET_FIELD_PUT,
     payload,
 });
 

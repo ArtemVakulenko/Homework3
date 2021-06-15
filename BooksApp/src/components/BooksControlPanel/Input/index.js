@@ -1,14 +1,16 @@
 import { connect } from 'react-redux';
 import Input from './Input.jsx';
-import { changeField, clearFields } from '../../../store/booksCrudActions/actions.js';
-import { getCreateFieldState } from '../../../store/booksCrudActions/selectors';
+import { changeFieldPost, changeFieldPut } from '../../../store/booksCrudActions/actions.js';
+import { getCreateFieldState, getStatusPostOrPut, getUpdateFieldState } from '../../../store/booksCrudActions/selectors';
 
 const mapStateToProps = (state, props) => ({
-    value: getCreateFieldState(state, props),
+    valuePost: getCreateFieldState(state, props),
+    valuePut: getUpdateFieldState(state, props),
+    post: getStatusPostOrPut(state),
 });
 
 const mapDispatchToProps = {
-    changeField,
+    changeFieldPost, changeFieldPut,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Input);

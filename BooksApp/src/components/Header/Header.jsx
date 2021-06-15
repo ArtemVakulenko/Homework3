@@ -5,7 +5,7 @@ import './Header.scss';
 const Header = () => {
     return (
         <div className="header">
-                hello from react
+                this is header
         </div>
     );
 };

@@ -1,5 +1,5 @@
 import { booksGetRequest } from '../books/asyncActions';
-import * as ACTIONS from './actions';
+// import * as ACTIONS from './actions';
 import { setBooksTostore } from '../books/actions';
 import { URL } from '../../helpers/constants';
 
@@ -14,8 +14,7 @@ export const booksPostRequest = () => (dispatch, getState) => {
     })
     .then(() => dispatch(booksGetRequest()))
     .then((data) => JSON.parse(data))
-    .then((data) => dispatch(setBooksTostore(data)))
-    .then(dispatch(ACTIONS.clearFields()));
+    .then((data) => dispatch(setBooksTostore(data)));
 };
 
 export const bookDeleteRequest = (id) => (dispatch) => {
@@ -35,15 +34,15 @@ export const bookDeleteRequest = (id) => (dispatch) => {
 };
 
 export const bookPutRequest = () => (dispatch, getState) => {
-    const body = getState.booksCrudActions.putBook;
+    const body = getState().booksCrudActions.putBook;
     fetch(URL.books, {
         method: 'PUT',
         body: JSON.stringify(body),
         headers: {
             'Content-Type': 'application/json',
         },
-    });
-    // .then(() => dispatch(booksGetRequest()))
-    // .then((data) => JSON.parse(data))
-    // .then((data) => dispatch(setBooksTostore(data)));
+    })
+    .then(() => dispatch(booksGetRequest()))
+    .then((data) => JSON.parse(data))
+    .then((data) => dispatch(setBooksTostore(data)));
 };

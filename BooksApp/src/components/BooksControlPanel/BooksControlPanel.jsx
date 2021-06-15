@@ -4,9 +4,13 @@ import './BooksControlPanel.scss';
 import Input from './Input';
 import Button from '../Button';
 
-const BooksControlPanel = ({ booksGetRequest, booksPostRequest, clearFields }) => {
+const BooksControlPanel = ({ booksGetRequest, booksPostRequest, bookPutRequest, clearFields, flagPost }) => {
     const createBook = () => {
         booksPostRequest();
+        clearFields();
+    };
+    const changeBook = () => {
+        bookPutRequest();
         clearFields();
     };
     return (
@@ -18,8 +22,9 @@ const BooksControlPanel = ({ booksGetRequest, booksPostRequest, clearFields }) =
                 <Input id="author" label="author"/>
                 <Input id="description" label="description"/>
                 <Input id="image" label="image"/>
-                <Button value="send" onClick={createBook}/>
-                <Button value="put"/>
+                {flagPost
+                ? <Button value="send" onClick={createBook}/>
+                : <Button value="put" onClick={changeBook}/>}
             </div>
         </div>
     );
@@ -27,7 +32,9 @@ const BooksControlPanel = ({ booksGetRequest, booksPostRequest, clearFields }) =
 BooksControlPanel.propTypes = {
     booksGetRequest: propTypes.func,
     booksPostRequest: propTypes.func,
+    bookPutRequest: propTypes.func,
     clearFields: propTypes.func,
+    flagPost: propTypes.bool,
 };
 
 export default BooksControlPanel;
