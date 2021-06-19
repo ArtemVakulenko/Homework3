@@ -5,7 +5,9 @@ import StButton from './styled';
 function Button(props) {
     const { onClick, value } = props;
         return (
+            <div className="button">
             <StButton onClick={onClick}>{value}</StButton>
+            </div>
         );
 }
 
