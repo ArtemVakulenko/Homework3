@@ -1,9 +1,13 @@
 import React from 'react';
-import Button from '../Button';
+import Timer from '../Timer';
+import Header from '../Header/Header';
 
 const App = () => {
         return (
-            <Button/>
+            <>
+                <Header/>
+                <Timer/>
+            </>
         );
 }; 
 

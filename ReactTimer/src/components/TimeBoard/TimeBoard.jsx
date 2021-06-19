@@ -2,7 +2,9 @@ import React from 'react';
 
 const TimeBoard = () => {
     return (
-        <div />
+        <div className="TimeBoard">
+            this is time board
+        </div>
     );
 };
 
