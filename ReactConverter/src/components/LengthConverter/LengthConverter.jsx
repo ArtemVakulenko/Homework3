@@ -3,44 +3,85 @@ import './LengthConverter.scss';
 import Button from '../Button';
 import Input from '../Input';
 import DropDown from '../DropDown';
-// import { meter, mile, foot, versta, yard } from '../../helpers/constants';
+import { CONVERT } from '../../helpers/constants';
 
 const LengthConverter = () => {
     const initialState = {
-        leftPart: '',
-        rightPart: '',
+        leftPart: 'meter',
+        rightPart: 'meter',
         ammountStr: '',
-        ammountNum: 0,
-        result: 0,
+        result: '',
         message: '',
     };
 
-    const [state, setstate] = useState(initialState);
+    const [state, setState] = useState(initialState);
 
-    const convert = () => {
-
-    };
     const handleChange = (e) => {
-        setstate({
-            ...initialState,
+        setState({
+            ...state,
             ammountStr: e.target.value,
+            message: '',
 
         });
     };
     const handleBadChange = () => {
-        setstate({
-            ...initialState,
+        setState({
+            ...state,
             message: 'DO NOT TYPE HERE',
 
         });
     };
+
+    const handleSelect = (e) => {
+        if (e.target.id === 'leftPart') {
+            setState({
+                ...state,
+                leftPart: e.target.value,
+                message: '',
+            });
+        }
+        if (e.target.id === 'rightPart') {
+            setState({
+                ...state,
+                rightPart: e.target.value,
+                message: '',
+            });
+        }
+    };
+
+    const lenghts = ['meter', 'mile', 'foot', 'versta', 'yard'];
+
+    const convert = () => {
+        const { leftPart, rightPart, ammountStr } = state;
+        const multiplier = CONVERT[leftPart][rightPart];
+        const resStr = `${+ammountStr * multiplier}`;
+        setState({
+            ...state,
+            result: resStr,
+        });
+    };
+
     return (
         <div className="LengthConverter">
-            <Input placeholder='input first value' value={state.ammountStr} onChange={handleChange}/>
-            <DropDown/>
-            <Input placeholder='do not input here' value={state.result} onChange={handleBadChange}/>
-            <DropDown/>
+            <p>this is length converter</p>
+            <Input
+            placeholder='input first value'
+            value={state.ammountStr} 
+            onChange={handleChange}
+            />
+
+            <DropDown id='leftPart' options={lenghts} onChange={handleSelect}/>
+
+            <Input
+            placeholder='do not input here'
+            value={state.result}
+            onChange={handleBadChange}
+            />
+
+            <DropDown id='rightPart' options={lenghts} onChange={handleSelect}/>
+
             <Button value='convert' onClick={convert}/>
+
             <p>{state.message}</p>
         </div>
     );
