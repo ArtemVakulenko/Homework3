@@ -4,7 +4,7 @@ import './BooksControlPanel.scss';
 import Input from './Input';
 import Button from '../Button';
 
-const BooksControlPanel = ({ booksGetRequest, booksPostRequest, bookPutRequest, clearFields, flagPost }) => {
+const BooksControlPanel = ({ booksPostRequest, bookPutRequest, clearFields, flagPost }) => {
     const createBook = () => {
         booksPostRequest();
         clearFields();
@@ -15,7 +15,6 @@ const BooksControlPanel = ({ booksGetRequest, booksPostRequest, bookPutRequest, 
     };
     return (
         <div className="controlPanel">
-            <Button value="get books from server (only first time)" onClick={booksGetRequest}/>
             <div className="controlPanelInputs">
                 <Input id="title" label="title"/>
                 <Input id="date" label="date"/>
@@ -30,7 +29,6 @@ const BooksControlPanel = ({ booksGetRequest, booksPostRequest, bookPutRequest, 
     );
 };
 BooksControlPanel.propTypes = {
-    booksGetRequest: propTypes.func,
     booksPostRequest: propTypes.func,
     bookPutRequest: propTypes.func,
     clearFields: propTypes.func,
