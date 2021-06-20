@@ -6,10 +6,10 @@ export const initialState = {
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case AT.SET_ERROR_MESSAGE:
+      case AT.SET_MONEY_VALUE:
       return {
         ...state,
-        errorMessage: action.message,
+        currencies: action.payload,
       };
     default:
       return state;

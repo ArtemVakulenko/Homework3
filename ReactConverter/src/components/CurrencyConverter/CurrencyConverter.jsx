@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
+import propTypes from 'prop-types';
 import './CurrencyConverter.scss';
 import Button from '../Button';
 import Input from '../Input';
 import DropDown from '../DropDown';
 
-const CurrencyConverter = () => {
+const CurrencyConverter = ({ currencies, sendMoneyRequest }) => {
     const initialState = {
         leftPart: 'UAH',
         rightPart: 'UAH',
@@ -50,8 +51,9 @@ const CurrencyConverter = () => {
 
     const currencies1 = ['UAH'];
     const currencies2 = ['UAH', 'USD', 'EUR', 'RUR'];
-    const convert = () => {
-        console.log('123');
+    const convert = async () => {
+        await sendMoneyRequest();
+        console.log(currencies);
         // const { leftPart, rightPart, ammountStr } = state;
         // const multiplier = CONVERT[leftPart][rightPart];
         // const resStr = `${+ammountStr * multiplier}`;
@@ -85,6 +87,11 @@ const CurrencyConverter = () => {
             <p>{state.message}</p>
         </div>
     );
+};
+
+CurrencyConverter.propTypes = {
+    sendMoneyRequest: propTypes.func,
+    currencies: propTypes.any,
 };
 
 export default CurrencyConverter;
