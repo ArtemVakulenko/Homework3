@@ -37,6 +37,7 @@
       "single"
     ],
     "react/jsx-props-no-spreading": "off",
+    "react/prefer-stateless-function": "off",
     "linebreak-style": "off",
     "camelcase": "off",
     "arrow-body-style": "off",
