@@ -35,7 +35,8 @@ class Timer extends Component {
         const { timeInSecondsStr } = this.state;
         if (!Number(timeInSecondsStr)) {
             this.setState({
-                errorMessage: ' only numbers',
+                errorMessage: 'only numbers',
+                timeInSecondsStr: '',
             });
         } else {
             this.setState({
