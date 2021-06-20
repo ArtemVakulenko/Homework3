@@ -1,13 +1,13 @@
 import React from 'react';
-import Timer from '../Timer';
-import Header from '../Header';
+import LengthConverter from '../LengthConverter';
+import CurrencyConverter from '../CurrencyConverter';
 import './App.scss';
 
 const App = () => {
         return (
             <>
-                <Header/>
-                <Timer/>
+                <LengthConverter/>
+                <CurrencyConverter/>
             </>
         );
 }; 
