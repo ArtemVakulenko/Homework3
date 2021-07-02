@@ -47,7 +47,13 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 postBook: {},
+                putBook: {},
             };
+            case AT.TOGGLE_MODAL:
+                return {
+                    ...state,
+                    showModal: action.payload,
+                };
         default:
             return state;
     }

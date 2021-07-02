@@ -16,6 +16,10 @@ export const getStatusPostOrPut = createSelector(
     getBooksCrudActionsReducerStore,
     (booksCrudActions) => booksCrudActions.post,
 ); 
+export const getStatusShowModal = createSelector(
+    getBooksCrudActionsReducerStore,
+    (booksCrudActions) => booksCrudActions.showModal,
+); 
 
 export const getCreateFieldState = createSelector(
     getCreateFormState,

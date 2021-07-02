@@ -4,7 +4,7 @@ import { setBooksToStore } from '../books/actions';
 import { URL } from '../../helpers/constants';
 import { postRequest, deleteRequest, putRequest, getRequest } from '../../helpers/request';
 import { getCreateFormState, getUpdateFormState } from './selectors';
-import { setFieldPost } from './actions';
+import { setFieldPost, toggleModal } from './actions';
 import 'regenerator-runtime/runtime';
 
 export function* booksPostRequestSaga() {
@@ -14,6 +14,7 @@ export function* booksPostRequestSaga() {
     const response = yield call(getRequest, URL.books);
     const data = yield call([response, 'json']);
     yield put(setBooksToStore(data));
+    yield put(toggleModal(false));
   } catch (e) {
     console.log(e);
   }
@@ -38,6 +39,7 @@ export function* booksPutRequestSaga() {
     const data = yield call([response, 'json']);
     yield put(setBooksToStore(data));
     yield put(setFieldPost(true));
+    yield put(toggleModal(false));
   } catch (e) {
     console.log(e);
   }

@@ -3,7 +3,7 @@ import './BookItem.scss';
 import propTypes from 'prop-types';
 import Button from '../Button';
 
-const BookItem = ({ book, booksDeleteRequest, setFieldPut }) => {
+const BookItem = ({ book, booksDeleteRequest, setFieldPut, toggleModal }) => {
     const { id, title, date, author, description, image } = book;
 
     const handleDelete = () => {
@@ -12,6 +12,7 @@ const BookItem = ({ book, booksDeleteRequest, setFieldPut }) => {
 
     const handleEdit = () => {
         setFieldPut(book);
+        toggleModal(true);
     };
 
     return (
@@ -33,6 +34,7 @@ BookItem.propTypes = {
     book: propTypes.object,
     booksDeleteRequest: propTypes.func,
     setFieldPut: propTypes.func,
+    toggleModal: propTypes.func,
 };
 
 export default BookItem;
