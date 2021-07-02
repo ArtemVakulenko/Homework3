@@ -9,7 +9,6 @@ export function* booksGetRequest() {
     const response = yield call(fetch, URL.books);
     const data = yield call([response, 'json']);
     yield put(setBooksToStore(data));
-    console.log(data);
   } catch (e) {
     console.log(e);
   }

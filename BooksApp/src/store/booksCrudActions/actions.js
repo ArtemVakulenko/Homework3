@@ -14,6 +14,10 @@ export const setFieldPut = (payload) => ({
     type: AT.SET_FIELD_PUT,
     payload,
 });
+export const setFieldPost = (payload) => ({
+    type: AT.SET_FIELD_POST,
+    payload,
+});
 
 export const clearFields = (payload) => ({
     type: AT.CLEAR_FIELDS,

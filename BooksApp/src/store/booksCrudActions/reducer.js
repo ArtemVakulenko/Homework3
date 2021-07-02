@@ -4,6 +4,7 @@ const initialState = {
     postBook: {},
     putBook: {},
     post: true,
+    showModal: false,
 };
 
 const reducer = (state = initialState, action) => {
@@ -32,6 +33,15 @@ const reducer = (state = initialState, action) => {
                     ...action.payload,
                 },
                 post: false,
+            };
+            case AT.SET_FIELD_POST:
+            return {
+                ...state,
+                putBook: {
+                    ...state.putBook,
+                    ...action.payload,
+                },
+                post: true,
             };
         case AT.CLEAR_FIELDS:
             return {
