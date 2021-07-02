@@ -4,13 +4,13 @@ import './BooksControlPanel.scss';
 import Input from './Input';
 import Button from '../Button';
 
-const BooksControlPanel = ({ booksPostRequest, bookPutRequest, clearFields, flagPost }) => {
+const BooksControlPanel = ({ booksPostRequest, booksPutRequest, clearFields, flagPost }) => {
     const createBook = () => {
         booksPostRequest();
         clearFields();
     };
     const changeBook = () => {
-        bookPutRequest();
+        booksPutRequest();
         clearFields();
     };
     return (
@@ -30,7 +30,7 @@ const BooksControlPanel = ({ booksPostRequest, bookPutRequest, clearFields, flag
 };
 BooksControlPanel.propTypes = {
     booksPostRequest: propTypes.func,
-    bookPutRequest: propTypes.func,
+    booksPutRequest: propTypes.func,
     clearFields: propTypes.func,
     flagPost: propTypes.bool,
 };

@@ -5,13 +5,13 @@ import { render } from 'react-dom';
 import createSagaMiddleware from 'redux-saga';
 import App from './components/App';
 import rootReducer from './store';
-import booksWatcher from './store/books/saga';
+import rootSaga from './store/rootSaga';
 
 const saga = createSagaMiddleware();
 
 const devTools = window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
 const store = createStore(rootReducer, compose(applyMiddleware(saga), devTools));
-saga.run(booksWatcher);
+saga.run(rootSaga);
 
 render(
     <Provider store={store}>

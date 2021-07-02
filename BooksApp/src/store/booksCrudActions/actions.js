@@ -19,3 +19,15 @@ export const clearFields = (payload) => ({
     type: AT.CLEAR_FIELDS,
     payload,
 });
+
+export const booksPostRequest = () => ({
+    type: AT.BOOKS_POST_REQUEST,
+});
+
+export const booksDeleteRequest = (payload) => ({
+    type: AT.BOOKS_DELETE_REQUEST,
+    payload,
+});
+export const booksPutRequest = () => ({
+    type: AT.BOOKS_PUT_REQUEST,
+});

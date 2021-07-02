@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import BooksControlPanel from './BooksControlPanel.jsx';
-import { booksPostRequest, bookPutRequest } from '../../store/booksCrudActions/asyncActions';
-import { clearFields } from '../../store/booksCrudActions/actions.js';
+import { booksPostRequest, clearFields, booksPutRequest } from '../../store/booksCrudActions/actions';
+
 import { getStatusPostOrPut } from '../../store/booksCrudActions/selectors';
 
 const mapStateToProps = (state) => ({
@@ -10,7 +10,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
     booksPostRequest: () => dispatch(booksPostRequest()),
-    bookPutRequest: () => dispatch(bookPutRequest()),
+    booksPutRequest: () => dispatch(booksPutRequest()),
     clearFields: () => dispatch(clearFields()),
 });
 
