@@ -1,3 +1,4 @@
-export const getRequest = (url) => {
-  return fetch(url);
+export const getRequest = async (url) => {
+  const res = await fetch(url);
+  return res;
 };
