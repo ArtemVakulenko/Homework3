@@ -6,11 +6,10 @@ import { convertFromPrivatToNormal } from '../../helpers/converter';
 const URL = 'https://api.privatbank.ua/p24api/pubinfo?json&exchange&coursid=5';
 
 export function* getMoney() {
-    let data = yield call(fetch, URL);
-    data = yield data.json();
-    yield call(convertFromPrivatToNormal, data);
-    console.log(data);
-    yield put(ACTIONS.setMoneyValue(data));
+    const response = yield call(fetch, URL);
+    const data = yield call([response, 'json']);
+    const normalData = yield call(convertFromPrivatToNormal, data);
+    yield put(ACTIONS.setMoneyValue(normalData));
 }
 
 export default function* watcher() {

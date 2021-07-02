@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import propTypes from 'prop-types';
 import './CurrencyConverter.scss';
 import Button from '../Button';
@@ -6,9 +6,12 @@ import Input from '../Input';
 import DropDown from '../DropDown';
 
 const CurrencyConverter = ({ currencies, sendMoneyRequest }) => {
+    useEffect(() => {
+        sendMoneyRequest();
+    }, []);
     const initialState = {
         leftPart: 'UAH',
-        rightPart: 'UAH',
+        rightPart: 'USD',
         ammountStr: '',
         result: '',
         message: '',
@@ -50,17 +53,15 @@ const CurrencyConverter = ({ currencies, sendMoneyRequest }) => {
     };
 
     const currencies1 = ['UAH'];
-    const currencies2 = ['UAH', 'USD', 'EUR', 'RUR'];
-    const convert = async () => {
-        await sendMoneyRequest();
-        console.log(currencies);
-        // const { leftPart, rightPart, ammountStr } = state;
-        // const multiplier = CONVERT[leftPart][rightPart];
-        // const resStr = `${+ammountStr * multiplier}`;
-        // setState({
-        //     ...state,
-        //     result: resStr,
-        // });
+    const currencies2 = ['USD', 'EUR', 'RUR'];
+    const convert = () => {
+        const { rightPart, ammountStr } = state;
+        const multiplier = currencies[rightPart];
+        const resStr = `${+ammountStr * multiplier}`;
+        setState({
+            ...state,
+            result: resStr,
+        });
     };
 
     return (
