@@ -17,7 +17,7 @@ class BooksController {
         console.log('get');
         this.db.all('SELECT * FROM books', (err, data) => {
             if (err) {
-                this.response(res, 400, 'sosi lapu');
+                this.response(res, 400, 'bad');
             }
             this.response(res, 200, data);
         });
@@ -29,7 +29,7 @@ class BooksController {
         const postQuery = `INSERT INTO books (title, date, author, description, image) VALUES ("${body.title}", "${body.date}", "${body.author}", "${body.description}", "${body.image}")`;
         this.db.run(postQuery, (err) => {
             if (err) {
-                this.response(res, 400, 'sosi lapu');
+                this.response(res, 400, 'bad');
             }
             this.response(res, 200, 'vse ok');
         });
@@ -41,7 +41,7 @@ class BooksController {
         const putQuery = `UPDATE books SET (title, date, author, description, image) = ("${body.title}", "${body.date}", "${body.author}", "${body.description}", "${body.image}") WHERE id = ${body.id}`;
         this.db.run(putQuery, (err) => {
             if (err) {
-                this.response(res, 400, 'sosi lapu');
+                this.response(res, 400, 'bad');
             }
             this.response(res, 200, 'vse ok');
         });
@@ -53,7 +53,7 @@ class BooksController {
         const deleteQuery = `DELETE FROM books WHERE id = ${body.id}`;
         this.db.run(deleteQuery, (err) => {
             if (err) {
-                this.response(res, 400, 'sosi lapu');
+                this.response(res, 400, 'bad');
             }
             this.response(res, 200, 'vse ok');
         });

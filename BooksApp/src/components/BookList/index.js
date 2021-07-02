@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import BookList from './BookList.jsx';
-import { booksGetRequest } from '../../store/books/asyncActions';
+import { booksGetRequest } from '../../store/books/actions';
 import { getBooksReducerStoreList } from '../../store/books/selectors';
 
 const mapStateToProps = (state) => ({
